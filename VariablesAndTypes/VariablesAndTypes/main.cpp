@@ -77,6 +77,18 @@ void main()
 	const int MAX_SPEED = 250;
 	//MAX_SPEED = 350;
 	//l-value = r-value;
+//http://cplusplus.com/doc/tutorial/constants/
+	//Numerals
+	cout << sizeof(long double) << endl;
+	cout << typeid(.5f).name() << endl;
+	5;	//Числовая константа типа int
+	speed;
+
+	//Literals
+	cout << '\n';
+	cout << sizeof('+') << endl;
+	cout << sizeof("+") << endl;
+
 #endif
 }
 
@@ -89,7 +101,7 @@ void main()
 
 /*
 -------------------------------------
-1. Логические типы: bool (Boolean) 1 Byte 
+1. Логические типы: bool (Boolean) 1 Byte
 	true - 1
 	false- 0
 
