@@ -7,7 +7,8 @@ using std::endl;
 //#define INTEGER_TYPES
 //#define FLOATING_POINTS
 //#define NAMES
-#define CONSTANTS
+//#define CONSTANTS
+//#define TYPE_CONVERSIONS
 
 void main()
 {
@@ -90,7 +91,33 @@ void main()
 	cout << sizeof("+") << endl;
 
 #endif
+
+#ifdef TYPE_CONVERSIONS
+	double money;
+	cout << "Введите денежную сумму: "; cin >> money;
+	cout << money << endl;
+	int grn = money;
+	cout << grn << " грн.\t";
+	int cop = (money - grn+1e-10)*100;
+	cout << cop << " коп.\n";
+#endif
+
+	/*+3;
+	-3;
+	8 - 3;
+	5 * 3;
+	*3;*/
+	//cout << 11. % 3 << endl;
 }
+
+/*
+---------------------------
+Statement - утверждение.
+---------------------------
+
+
+
+*/
 
 
 //Переменная (Variable) - это именованная область памяти,
