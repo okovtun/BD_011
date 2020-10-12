@@ -2,7 +2,8 @@
 using namespace std;
 
 //#define ASSIGNMENT_OPERATOR
-//#define INCREMENT_DECREMENT
+#define INCREMENT_DECREMENT
+//#define COMPAUND_ASSIGNMENTS
 
 void main()
 {
@@ -20,14 +21,25 @@ void main()
 #endif // ASSIGNMENT_OPERATOR
 
 #ifdef INCREMENT_DECREMENT
-	int i = 0;
+	/*int i = 0;
 	int j = ++i;
 	cout << j << endl;
+	cout << i << endl;*/
+
+	int i = 3;
+	i += i++ + 1 + (++i *= 2);
 	cout << i << endl;
+
+	i += 5;	//Îïåðàòîð ÏÐÈÁÀÂÈÒÜ
+	i -= 3;	//Îïåðàòîð ÎÒÍßÒÜ
+	i *= 2;
 #endif // INCREMENT_DECREMENT
-	
+
+#ifdef COMPAUND_ASSIGNMENTS
 	int a = 2;
 	//a = a + 3;
 	a += 3;
 	cout << a << endl;
+#endif // COMPAUND_ASSIGNMENTS
+
 }

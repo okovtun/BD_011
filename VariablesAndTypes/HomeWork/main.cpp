@@ -11,7 +11,16 @@ using namespace std;
 void main()
 {
 	setlocale(LC_ALL, "Rus");
-	cout << obm(int) << sizeof(int) << " байта" << min << INT_MIN << max << INT_MAX << endl;
+
+	cout << "Переменная типа int занимает " << sizeof(int) << "Байт.\n";
+	cout << "Диапазон принимаемых значений:\n";
+	cout << "unsigned int:\t\t" << 0 << "..." << UINT_MAX << endl;
+	cout << "  signed int: " << INT_MIN << "..." << INT_MAX << endl;
+
+
+
+
+	//cout << obm(int) << sizeof(int) << " байта" << min << INT_MIN << max << INT_MAX << endl;
 	/*cout << obm << "int равен " << sizeof(int) << " байта" << min << INT_MIN << max << INT_MAX << endl;
 	cout << obm << "unsigned int равен " << sizeof(unsigned int) << " байта" << min << "0" << max << UINT_MAX << endl;
 	cout << obm << "short равен " << sizeof(short) << " байта" << min << SHRT_MIN << max << SHRT_MAX << endl;
