@@ -2,9 +2,19 @@ https://github.com/okovtun/BD_011
 https://www.youtube.com/watch?v=JcxXWXfzvh0&list=PLeqyOOqxeiIOAV6jwf66i0qm7tLMGSQZn&index=1&t=1316s
 
 TOREAD:
-http://cplusplus.com/doc/tutorial/operators/
+http://cplusplus.com/doc/tutorial/control/
 
 TODO:
+Написать программу 3Dshooter, которая выводит на экран действие пользователя, в зависимости от нажатой клавиши:
+w - вперед
+s - назад
+a - влево
+d - вправо
+space - прыжок
+enter - огонь
+escape - выход.
+
+DONE:
 Пользователь вводит число, а программа говорит, введенное число Палиндром, или нет.
 12321
 1221
