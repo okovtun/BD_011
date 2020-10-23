@@ -1,129 +1,100 @@
-/*
-Написать программу 3Dshooter, которая выводит на экран действие пользователя, в зависимости от нажатой клавиши :
-w - вперед
-s - назад
-a - влево
-d - вправо
-space - прыжок
-enter - огонь
-escape - выход.
-*/
-
-#include <iostream>
-#include <conio.h> //Console Input Output header
+#include<iostream>
+#include<conio.h>
 using namespace std;
 
-#define Esc 27
-
-void main()
+long double fact(int N)
 {
-	setlocale(LC_ALL, "Russian");
-
-
-	char key;
-	int i = 0; //Кличество итераций
-
-	int step = 0, jump = 0, fire = 0;
-
-	do
-	{
-		i++;
-		if (i == 1) //Каждый раз если i=1, выводить на экран меню.
-		{
-			system("cls");
-			cout << "\t =========+=========+=========+=========+=========+========= \n";
-			cout << "\t|                      << 3D shuter >>                      |\n";
-			cout << "\t|-----------------------------------------------------------|\n";
-			cout << "\t| ________                                                  |\n";
-			cout << "\t|| Escape |                                                 |\n";
-			cout << "\t|| выход  |                                                 |\n";
-			cout << "\t|                   Управление персонажем:                  |\n";
-			cout << "\t|             ________                                      |\n";
-			cout << "\t|            |   w    |                                 ___ |\n";
-			cout << "\t|            | вперёд |                                |   ||\n";
-			cout << "\t| ________    ________    ________                 ____|   ||\n";
-			cout << "\t||   a    |  |   s    |  |   d    |               | Enter  ||\n";
-			cout << "\t|| влево  |  | назад  |  | вправо |               | огонь  ||\n";
-			cout << "\t|          _______________________________________          |\n";
-			cout << "\t|         |                 Space                 |         |\n";
-			cout << "\t|                           прыжок                          |\n";
-			cout << "\t =========+=========+=========+=========+=========+========= \n";
-			cout << "\t   Нажимайте клавишу действия персонажа\n";
-		}
-		else if (i == 10) //Каждые десять действий сбрасывать счетчик на ноль. При следующей итерации очищается экран, выводится меню.
-		{
-			i = 0;
-		}
-
-		key = _getch();
-
-		switch ((int)key)
-		{
-		case 119: // - w
-		{
-			cout << "\t/\\ Вперёд /\\\n";
-			step++; // + шаг
-			break;
-		}
-		case 97: // - a
-		{
-			cout << "\t<< Влево <<\n";
-			step++; // + шаг
-			break;
-		}
-		case 115: // - s
-		{
-			cout << "\t\\/ Назад \\/\n";
-			step++; // + шаг
-			break;
-		}
-		case 100: // - d
-		{
-			cout << "\t>> Вправо >>\n";
-			step++; // + шаг
-			break;
-		}
-		case 13: // - Enter
-		{
-			cout << "\t** Огонь! **\n";
-			fire++; // + выстрел
-			break;
-		}
-		case 32: // - Space
-		{
-			cout << "\t^^ Прыжок ^^\n";
-			jump++; // + прыжок
-			break;
-		}
-		default: //Нажата не зарегистрированная клавиша. Не считать как итерацию.
-			i--;
-			break;
-		}
-	} while (key != Esc);
-
-	system("cls");
-	cout << "\t =========+=========+=========+=========+=========+========= \n";
-	cout << "\t|         За время работы программы персонаж совршил:       |\n";
-	cout << "\t ----------------------------------------------------------- \n";
-	cout << "\t               Шагов    - " << step << endl;
-	cout << "\t               Прыжков  - " << jump << endl;
-	cout << "\t               Высрелов - " << fire << endl;
-	cout << "\t =========+=========+=========+=========+=========+========= \n\n";
-	cout << "\t                       До новых встреч!\n\n";
+	if (N < 0)  return 0;
+	if (N == 0) return 1;
+	else return N * fact(N - 1);
 }
 
-//Исполнитель
-/*
------------------------------------------------------
-|													|
-|	"Компьютерная академия ШАГ"						|
-|	Курс: БД011										|
-|	Предмет: Основы програмирования на языке C++	|
-|													|
-|	Исполнитель: Курицын Алексей					|
-|	Преподаватель: Ковтун Олег						|
-|													|
-|	Екатеринбург - 2020								|
-|													|
------------------------------------------------------
-*/
+//#define FACTORIAL_1
+//#define FACTORIAL_2
+#define ASCII
+//#define DEGREE
+
+int main()
+{
+	setlocale(LC_ALL, "");
+#ifdef FACTORIAL_1
+	int N;
+	cout << "Введите число для факториала:";
+	cin >> N;
+	cout << "Факториал для числа" << N << "=" << fact(N) << endl;
+#endif // FACTORIAL_1
+
+#ifdef FACTORIAL_2
+	int factorial;
+	int N;
+	int F = 1;
+	cout << "Введите число для факториала:";
+	cin >> N;
+	if (N < 0)
+	{
+		cout << "Error" << endl;
+		return 0;
+	}
+	for (int i = 1; i <= N; ++i)
+	{
+		F *= i;
+	}
+
+	if (N >= 0)
+	{
+		cout << F << endl;
+	}
+	else
+	{
+		cout << "Ошибка : N < 0";
+	}
+	return 0;
+}
+#endif //FACTORIAL_2
+
+#ifdef ASCII
+
+for (int i = 0; i <= 255; i++)
+{
+	//printf(" %3d-%c", i, i);
+	cout << (char)i << " ";
+	if (i % 16 == 0) cout<<"\n";
+}
+cout<<"\n";
+#endif //ASCII
+
+#ifdef DEGREE
+
+double a, b, d;
+int n, i;
+cout << "Введите число:" << endl;
+cin >> a;
+b = a;
+d = a;
+cout << "Введите степень:" << endl;
+cin >> n;
+if (n > 0)
+{
+	for (i = 1; i < n; i++)
+	{
+		a = d * b;
+		d = a;
+	}
+}
+else if (n < 0)
+{
+	a = 1;
+	for (i = 0; i > n; i = i - 1)
+	{
+		a = a / b;
+	}
+}
+else if (n == 0)
+{
+	a = 1;
+}
+cout << a << endl;
+#endif DEGREE
+
+return 0;
+}

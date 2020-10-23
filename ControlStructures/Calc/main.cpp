@@ -1,8 +1,11 @@
 #include<iostream>
+#include<conio.h>
 using namespace std;
 using std::cin;
 using std::cout;
 using std::endl;
+
+#define Escape 27
 
 //#define DARTS
 //#define TEST
@@ -69,8 +72,9 @@ void main()
 	cout << "Вы набрали " << score << " баллов.\n";
 #endif // TEST
 
-	double a, b;	//Числа, вводимые пользователем
+	double a, b, c=0;	//Числа, вводимые пользователем
 	char s;		//Sign - знак операции
+
 	cout << "Введите выражение: ";
 	cin >> a >> s >> b;
 	//cout << a << s << b << endl;
@@ -95,28 +99,41 @@ void main()
 	{
 		cout << "Error: No operation" << endl;
 	}*/
-
-	switch (s)
+	cout << "Для выхода из программы нажмите Escape" << endl;
+	do
 	{
-	case '+': cout << a << " + " << b << " = " << a + b << endl; break;
-	case '-': cout << a << " - " << b << " = " << a - b << endl; break;
-	case '*': cout << a << " * " << b << " = " << a * b << endl; break;
-	case '/': cout << a << " / " << b << " = " << a / b << endl; break;
-	default: cout << "Error: No operation" << endl;
-	}
+		//system("CLS");
+		c=a;
+		//cout << "Введите выражение: ";
+		switch (s)
+		{
+		case '+': /*c = a + b;*/ cout << c << " + " << b << " = " << (a += b)/* << endl*/; break;
+		case '-': /*c = a - b;*/ cout << c << " - " << b << " = " << (a -= b)/* << endl*/; break;
+		case '*': /*c = a * b;*/ cout << c << " * " << b << " = " << (a *= b) /*<< endl*/; break;
+		case '/': /*c = a / b;*/ cout << c << " / " << b << " = " << (a /= b) /*<< endl*/; break;
+		default: cout << "Error: No operation" << endl;
+		}
+		//cout << "Для выхода из программы нажмите Escape" << endl;
+		s = _getch();
+		if (s != Escape)
+		{
+			cout << s;
+			cin >> b;
+		}
+	} while (s != Escape);
 
-	main();
+	//main();
 
-	int var=0;
-	switch (var)
-	{
-	case CONST_1: /*..code1..*/;break;
-	case CONST_2: /*..code2..*/;break;
-		//........
-		//........
-	case CONST_N: /*..codeN..*/	break;
-	default: /*default code*/cout << "Sam ti error";
-	}
+	//int var = 0;
+	//switch (var)
+	//{
+	//case CONST_1: /*..code1..*/; break;
+	//case CONST_2: /*..code2..*/; break;
+	//	//........
+	//	//........
+	//case CONST_N: /*..codeN..*/	break;
+	//default: /*default code*/cout << "Sam ti error";
+	//}
 }
 
 
