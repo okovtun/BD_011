@@ -1,144 +1,49 @@
-/* Задание
-Сделать шахматную доску.
-*/
 
 #include <iostream>
 #include <conio.h>
 using namespace std;
 
-/*
 #define Esc 27
 #define Enter 13
 #define Delete 83
 #define Backspace 8
-*/
 
-#define line_vertical cout << (char)179
-#define line_horizontal cout << (char)196
-#define corner_left_top cout << (char)218
-#define corner_left_bottom cout << (char)192
-#define corner_right_top cout << (char)191
-#define corner_right_bottom cout << (char)217
+#define TYPE long long int
 
-#define fill_full cout << (char)219
-#define fill_none cout << (char)32
-
-#define offset cout << (char)32 << (char)32
-
-//#define ASCI_SYMBOL
-#define CHESSBOARD
+TYPE factorial(TYPE number) //Рассчет факториала числа.
+{
+	float result = 1;
+	for (int i = 1; i <= number; i++)
+	{
+		result *= i;
+	}
+	return result;
+}
 
 void main()
 {
+
 	setlocale(LC_ALL, "Russian");
+	int pascal_cout_row; //Количесво выводимых строк
+	int spases_count = 25; // Выравнивание триугольника
+	cout << "\t   Вывод треугольника Паскаля.\n";
+	cout << "\tТриугольник строится то 0 до 12 строчки... Дальше ошибка...\n";
+	cout << "\tВведите количество выводимых строк: "; cin >> pascal_cout_row;
+	cout << endl;
 
-#ifdef ASCI_SYMBOL //Вывод таблицы ASCI для справки :D
-	setlocale(LC_ALL, "C");
-	for (int i = 0; i <= 255; i++)
+	for (TYPE n = 0; n <= pascal_cout_row; n++) //Номер строки
 	{
-		cout << (int)i << "- " << (char)i << "  ";
-	}
-	cout << (int)' ';
-	setlocale(LC_ALL, "Russian");
-#endif // ASCI_SYMBOL
-
-#ifdef CHESSBOARD
-	system("cls");
-	cout << "  Сегодня без меню :(\n";
-	//Объявление переменных
-	int fill_size_width, fill_size_height; //Размер заливки - длина и высота
-
-	int board_size; //Размер доски
-
-	int board_size_width, board_size_height; //Размер доски - длина и высота
-
-	//Инициализация и рассчеты
-	offset;	cout << "Введите количество клеточек: "; cin >> board_size;
-	offset;	cout << "Введите размер заливки (кратное двум): "; cin >> fill_size_width;
-	//fill_size_width = 6;
-	if (board_size > 0 && fill_size_width > 0)
-	{
-		fill_size_width = fill_size_width * 10 / 2 / 10 * 2; //Округляем введёное число до нижнего четного
-
-		fill_size_height = fill_size_width / 2;
-
-		//board_size = 8;
-
-		board_size_height = board_size * fill_size_height;
-		board_size_width = board_size * fill_size_width;
-
-
-		setlocale(LC_ALL, "C");
-		//corner_left_top;
-		for (int i = 0; i < (board_size_height)+2; i++) //Строчки
+		for (int i = 0; i < spases_count * 2; i++) cout << " "; //Выводим отступы для выравнивания треугольника...
+		for (int r = 0; r <= n; r++) // Номер столбца
 		{
-			offset;
-			for (int j = 0; j < (board_size_width)+2; j++) //Колонки
-			{
-				if (i == 0 || i == (board_size_height + 1) || j == 0 || j == (board_size_width + 1)) //Рамка
-				{
-					if (i == 0 && j == 0) //Левый верхний угол
-					{
-						corner_left_top;
-					}
-					else if (i == (board_size_height + 1) && j == 0) //Левый нижний угол
-					{
-						corner_left_bottom;
-					}
-					else if (i == 0 && j == (board_size_width + 1)) //Правый верхний угол
-					{
-						corner_right_top;
-					}
-					else if (i == (board_size_height + 1) && j == (board_size_width + 1)) //Правый нижний угол
-					{
-						corner_right_bottom;
-					}
-					else //Линии
-					{
-						if (i > 0 && i < (board_size_height + 1)) //Вертикальные
-						{
-							line_vertical;
-						}
-						else if (j > 0 && j < (board_size_width + 1)) //Горизонтальные
-						{
-							line_horizontal;
-						}
-					}
-				}
-				else //Вывод поля
-				{
-					(!(((j - 1) / fill_size_width + (i - 1) / fill_size_height) % 2)) ? fill_full : fill_none;
-				}
-			}
-			cout << endl;
+			cout.width(4);
+			cout << (factorial(n) / (factorial(r) * factorial(n - r))) << ""; //Вормула рассчета числа C = n! / (r! * (n-r)!)...
 		}
-		setlocale(LC_ALL, "Russian");
-	}
-	else
-	{
-		cout << "Занчения должны быть больше ноля.\n";
-	}
+		cout << "\n";
+		spases_count--;
+	} //Верно считает 0 - 12 строку треугольника. Дальше ошибка :(:(:(
 
-	offset;
-	system("pause");
-
-#endif // CHESSBOARD
+	cout << "\n\n";
 
 	main();
 }
-
-//Исполнитель
-/*
------------------------------------------------------
-|													|
-|	"Компьютерная академия ШАГ"						|
-|	Курс: БД011										|
-|	Предмет: Основы програмирования на языке C++	|
-|													|
-|	Исполнитель: Курицын Алексей					|
-|	Преподаватель: Ковтун Олег						|
-|													|
-|	Екатеринбург - 2020								|
-|													|
------------------------------------------------------
-*/
