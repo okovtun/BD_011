@@ -1,4 +1,5 @@
 #include<iostream>
+#include<conio.h>
 using namespace std;
 
 //#define ROMBUS
@@ -6,6 +7,14 @@ using namespace std;
 void main()
 {
 	setlocale(LC_ALL, "");
+
+	/*char key;
+	do
+	{
+		key = _getch();
+		cout << (int)key << "\t" << key << endl;
+	} while (true);*/
+
 	int n;
 	cout << "¬ведите размер фигуры: "; cin >> n;
 #ifdef ROMBUS
