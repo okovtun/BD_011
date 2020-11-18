@@ -1,679 +1,160 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
-#include <string>
-#include <conio.h>
-#include <locale>
-#include <stdio.h>
-#include <io.h>
+#include <stdlib.h>
+#include <ctime>
 #include <Windows.h>
-#include <fcntl.h>
-#include <valarray>
-
-
-
 using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
 
 /*
-#define escape 27
-#define enter 13
-#define space 32
-#define tab 9
-#define BackSlash 92
-*/
-/*
-#define UgolUpLeft (char)218
-#define UgolUpRight (char)191
-#define UgolDownLeft (char)192
-#define UgolDownRight (char)217
-#define HorizontalLine (char)196
-#define VerticalLine (char)179
-#define Kvadrat (char)219
-#define space 32
+TODO:
+1. Массив, заполненный случайными числами, отсортировать в порядке возрастания;
+2. Массив из 10-ти элементов заполнить уникальными случайными числами, от 0 до 10;
 */
 
-const char sz_loading[] = "Загрузка кода";
-const char sz_source_arr[] = "--------- Изначально ---------";
+//#define SORTING_RAND //Пузырьковая сортировка по возрастанию
+#define UNIQ_RAND //Генерация уникального массива
 
-void ShiftSelf()
+void main()
 {
+	setlocale(LC_ALL, "Russian");
 
-	cout << "Н";
-	Sleep(50);
-	cout << "а";
-	Sleep(50);
-	cout << " ";
-	Sleep(50);
-	cout << "с";
-	Sleep(50);
-	cout << "к";
-	Sleep(50);
-	cout << "о";
-	Sleep(50);
-	cout << "л";
-	Sleep(50);
-	cout << "ь";
-	Sleep(50);
-	cout << "к";
-	Sleep(50);
-	cout << "о";
-	Sleep(50);
-	cout << " ";
-	Sleep(50);
-	cout << "и";
-	Sleep(50);
-	cout << " ";
-	Sleep(50);
-	cout << "к";
-	Sleep(50);
-	cout << "у";
-	Sleep(50);
-	cout << "д";
-	Sleep(50);
-	cout << "а";
-	Sleep(50);
-	cout << " ";
-	Sleep(50);
-	cout << "с";
-	Sleep(50);
-	cout << "д";
-	Sleep(50);
-	cout << "в";
-	Sleep(50);
-	cout << "и";
-	Sleep(50);
-	cout << "г";
-	Sleep(50);
-	cout << "а";
-	Sleep(50);
-	cout << "е";
-	Sleep(50);
-	cout << "м";
-	Sleep(50);
-	cout << "?";
-	Sleep(50);
-	cout << " ";
-	Sleep(50);
-	cout << "(";
-	Sleep(50);
-	cout << "-1";
-	Sleep(50);
-	cout << " ";
-	Sleep(50);
-	cout << "в";
-	Sleep(50);
-	cout << "п";
-	Sleep(50);
-	cout << "р";
-	Sleep(50);
-	cout << "а";
-	Sleep(50);
-	cout << "в";
-	Sleep(50);
-	cout << "о";
-	Sleep(50);
-	cout << " ";
-	Sleep(50);
-	cout << "1";
-	Sleep(50);
-	cout << " ";
-	Sleep(50);
-	cout << "в";
-	Sleep(50);
-	cout << "л";
-	Sleep(50);
-	cout << "е";
-	Sleep(50);
-	cout << "в";
-	Sleep(50);
-	cout << "о";
-	Sleep(50);
-	cout << ")";
-	Sleep(50);
-	cout << " ";
-	Sleep(50);
-	cout << ":";
-	Sleep(50);
-	cout << " ";
-
-}
-
-void Initially()
-{
-
-	/*cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << " ";
-	Sleep(50);
-	cout << "И";
-	Sleep(50);
-	cout << "з";
-	Sleep(50);
-	cout << "н";
-	Sleep(50);
-	cout << "а";
-	Sleep(50);
-	cout << "ч";
-	Sleep(50);
-	cout << "а";
-	Sleep(50);
-	cout << "л";
-	Sleep(50);
-	cout << "ь";
-	Sleep(50);
-	cout << "н";
-	Sleep(50);
-	cout << "о";
-	Sleep(50);
-	cout << " ";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";*/
-
-	//cout << sizeof(sz_source_arr) << endl;
-	for (int i = 0; i < sizeof(sz_source_arr); i++, Sleep(50))
-		cout << sz_source_arr[i];
-}
-
-void ShiftLeft()
-{
-
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << " ";
-	Sleep(50);
-	cout << "C";
-	Sleep(50);
-	cout << "д";
-	Sleep(50);
-	cout << "в";
-	Sleep(50);
-	cout << "и";
-	Sleep(50);
-	cout << "г";
-	Sleep(50);
-	cout << " ";
-	Sleep(50);
-	cout << "в";
-	Sleep(50);
-	cout << "л";
-	Sleep(50);
-	cout << "е";
-	Sleep(50);
-	cout << "в";
-	Sleep(50);
-	cout << "о";
-	Sleep(50);
-	cout << " ";
-	Sleep(50);
-	cout << "н";
-	Sleep(50);
-	cout << "а";
-	Sleep(50);
-	cout << " ";
-	Sleep(50);
-	cout << "4";
-	Sleep(50);
-	cout << " ";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-
-}
-
-void ShiftRight()
-{
-
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << " ";
-	Sleep(50);
-	cout << "C";
-	Sleep(50);
-	cout << "д";
-	Sleep(50);
-	cout << "в";
-	Sleep(50);
-	cout << "и";
-	Sleep(50);
-	cout << "г";
-	Sleep(50);
-	cout << " ";
-	Sleep(50);
-	cout << "в";
-	Sleep(50);
-	cout << "п";
-	Sleep(50);
-	cout << "р";
-	Sleep(50);
-	cout << "а";
-	Sleep(50);
-	cout << "в";
-	Sleep(50);
-	cout << "о";
-	Sleep(50);
-	cout << " ";
-	Sleep(50);
-	cout << "н";
-	Sleep(50);
-	cout << "а";
-	Sleep(50);
-	cout << " ";
-	Sleep(50);
-	cout << "2";
-	Sleep(50);
-	cout << " ";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-
-}
-
-void Tire()
-{
-
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-	Sleep(50);
-	cout << "-";
-
-}
-
-void next()
-{
-
-	cout << "А";
-	Sleep(50);
-	cout << " ";
-	Sleep(50);
-	cout << "т";
-	Sleep(50);
-	cout << "е";
-	Sleep(50);
-	cout << "п";
-	Sleep(50);
-	cout << "е";
-	Sleep(50);
-	cout << "р";
-	Sleep(50);
-	cout << "ь";
-	Sleep(50);
-	cout << " ";
-	Sleep(50);
-	cout << "с";
-	Sleep(50);
-	cout << "а";
-	Sleep(50);
-	cout << "м";
-	Sleep(50);
-	cout << "о";
-	Sleep(50);
-	cout << "м";
-	Sleep(50);
-	cout << "у";
-
-}
-
-void animate()
-{
-
-	for (int i = 0; i < INFINITE; ++i)
+#ifdef SORTING_RAND
+	/*	Задача №1
+		Массив, заполненный случайными числами, отсортировать в порядке возрастания
+	*/
+	const int N = 10; // Размер массива.
+	unsigned int arr[N] = {};
+	int sum = 0;
+	for (int i = 0; i < N; i++)
 	{
-		cout << "---------+++++++++---------+++++++++---------\r" << "";
-		Sleep(200);
-		cout << "+++++++++---------+++++++++---------+++++++++\r" << "";
-		Sleep(200);
+		cout << i << "\t";
+		sum += i;
+		cout << sum << endl;
+	}
+	srand(time(NULL)); // Установавем начальную точку генерирования последовательности. Используем функцию time(NULL)
 
-
+	for (int i = 0; i < N; i++) //Заполняем массив
+	{
+		arr[i] = rand()%10;
 	}
 
-
-}
-
-void downloadingComplete()
-{
-
-	cout << "З";
-	Sleep(50);
-	cout << "а";
-	Sleep(50);
-	cout << "г";
-	Sleep(50);
-	cout << "р";
-	Sleep(50);
-	cout << "у";
-	Sleep(50);
-	cout << "з";
-	Sleep(50);
-	cout << "к";
-	Sleep(50);
-	cout << "а";
-	Sleep(50);
-	cout << " ";
-	Sleep(50);
-	cout << "з";
-	Sleep(50);
-	cout << "а";
-	Sleep(50);
-	cout << "в";
-	Sleep(50);
-	cout << "е";
-	Sleep(50);
-	cout << "р";
-	Sleep(50);
-	cout << "ш";
-	Sleep(50);
-	cout << "е";
-	Sleep(50);
-	cout << "н";
-	Sleep(50);
-	cout << "а";
-	Sleep(50);
-	cout << ".";
-	Sleep(1000);
-	cout << "\b";
-	cout << "..";
-	Sleep(1000);
-	cout << "\b\b";
-	cout << "...";
-
-}
-
-void downloading()
-{
-
-	for (int i = 0; i < 101; i++)
-	{
-		cout << "\rЗагрузка кода: " << i << "%";
-		Sleep(20);
-	}
-
-}
-
-
-int main()
-{
-
-	setlocale(LC_ALL, "");
-
-	////////////////////////////////////////////////////// Тирешки и текст
-
-	downloading();
-
-	cout << endl << endl;
-
-	Tire();
-
-	cout << endl << endl;
-
-	downloadingComplete();
-
-	system("cls");
-
-	Initially();
-
-	cout << endl << endl;
-
-	////////////////////////////////////////////////////// Код
-
-	const int y = 8;
-	int arrr[y] = { 1, 2, 3, 4, 5, 6, 7, 8 };
-
-	for (int i : arrr)cout << i << " ";
-
-	////////////////////////////////////////////////////// Текст
-
-	cout << endl << endl;
-
-	ShiftLeft();
-
-	cout << endl << endl;
-
-	////////////////////////////////////////////////////// Код
-
-	const int n = 8;
-	int arr[n] = { 1, 2, 3, 4, 5, 6, 7, 8 };
-
-	valarray<int> arrShiftLeft(arr, 8);
-	arrShiftLeft = arrShiftLeft.cshift(4);
-
-	for (int i : arrShiftLeft)cout << i << " ";
-
-	////////////////////////////////////////////////////// Текст
-
-	cout << endl << endl;
-
-	ShiftRight();
-
-	cout << endl << endl;
-
-	////////////////////////////////////////////////////// Код
-
-	const int k = 8;
-	int array[k] = { 1, 2, 3, 4, 5, 6, 7, 8 };
-
-	valarray<int> arrShiftRight(array, 8);
-	arrShiftRight = arrShiftRight.cshift(-2);
-
-	for (int i : arrShiftRight)cout << i << " ";
-
-	////////////////////////////////////////////////////// Тирешки и текст
-
-	cout << endl << endl;
-
-	Tire();
-
-	cout << endl << endl;
-
-	next();
-
-	cout << endl << endl;
-
-	Tire();
-
-	cout << endl << endl;
-
-	////////////////////////////////////////////////////// Код
-
-	const int p = 8;
-	int arrayy[p] = { 1, 2, 3, 4, 5, 6, 7, 8 };
-
-	int qwe = 0;
-
-	ShiftSelf(); cin >> qwe;
-
+	cout << "Массив из " << N << " случайных чисел:";
 	cout << endl;
+	for (int i = 0; i < N; i++)
+	{
+		cout << arr[i] << "\t";
+		if (i % 15 == 0 && i != 0) cout << endl; //Перенос строки каждые 15 строчек.
+	}
+	cout << endl << endl;
+	///////////////////////////////////////////////////////////////////////////
+	//Сортировка массива по возрастанию.
+	//Методом "пузырька"
+	int iterations = 0;
+	int exchanges = 0;
+	for (int i = 0; i < N - 1; i++)
+	{//Количество элементов массива, минус одна итерация для исключения крайнего сравнения
+		for (int j = 0; j < N - i; j++)
+		{//Каждый новый цикл короче на одну итерацию.
+			if (arr[j] > arr[j + 1])
+			{//Если левое значение больше правого, то меняем их местами.
+				arr[j] ^= arr[j + 1]; //Шифруем левый по маске правого
+				arr[j + 1] ^= arr[j]; //В правый элемент расшифровываем левый, применяя начальное значение как ключ. Левый >переходит в> Правый. 
+				arr[j] ^= arr[j + 1]; //В левый элемент расшифровываем правый, применяя начальное значение как ключ. Правый >переходит в> Левый.
+				exchanges++;
+			}
+			iterations++;
+		}
+	}
+	cout << "Массив отсортирован за " << iterations << " итераций,\n";
+	cout << "при этом выполнено " << exchanges << " обменов элементов\n";
+	///////////////////////////////////////////////////////////////////////////
+	//Вывод сортированного по возрастанию массива
+	cout << "Сортированный по возрастанию массив из " << N << " случайных чисел:";
+	cout << endl;
+	for (int i = 0; i < N; i++)
+	{
+		cout << arr[i] << "\t";
+		if (i % 15 == 0 && i != 0) cout << endl; //Перенос строки каждые 15 строчек.
+	}
+	cout << endl << endl;
+#endif // SORTING_RAND
 
-	Tire();
+#ifdef UNIQ_RAND
+	/*	Задача №2
+		Массив из 10-ти элементов заполнить уникальными случайными числами, от 0 до 10
+	*/
 
+	const int N = 10;
+	int arr[N] = {};
+	bool uniq; //Флаг - Значение уникально.
+
+	const int WAIT = 50; //Задержка в мсек...
+
+	unsigned int start_time = clock(); // начальное время
+
+	//srand(time(NULL)); // Установавем начальную точку генерирования последовательности. Используем функцию time(NULL)
+	for (int i = 0; i < N; i++)
+	{
+		system("CLS");
+		cout << endl;
+		cout << "Генерация массива... " << i * 100 / N << "%";
+		cout << endl;
+		//Sleep(WAIT);
+
+		do
+		{
+			arr[i] = rand() % N;
+			uniq = true; //Предпологаем, значение уникальное "true"
+			//if (i > 0)
+			{
+				for (int j = 0; j < i; j++)
+				{
+					if (arr[i] == arr[j])
+					{
+						uniq = false; //Обнаружен двойник, значение уникально "false"
+					}
+				}
+			}
+		} while (!uniq); //Повторять, пока значение не будет уникальным.
+	}
+
+	system("CLS");
+	cout << endl;
+	cout << "Генерация массива... " << 100 << "%";
 	cout << endl << endl;
 
-	valarray<int> arrShiftAnother(arrayy, 8);
-	arrShiftAnother = arrShiftAnother.cshift(qwe);
-
-	for (int i : arrShiftAnother)cout << i << " ";
-
+	unsigned int finish_time = clock();
+	cout << "Массив сгенерирован за " << ((finish_time - start_time) / 1000.0) << " сек.";
 	cout << endl << endl;
 
-	////////////////////////////////////////////////////// Анимация
+	//Вывод сгенерированного, уникального массива
+	cout << "Уникально сгенерированный массив из " << N << " чисел от 0 до " << N - 1 << ":";
+	cout << endl;
+	for (int i = 0; i < N; i++)
+	{
+		cout << arr[i] << "   ";
+		if (i % 15 == 0 && i != 0) cout << endl; //Перенос строки каждые 15 строчек.
+	}
+	cout << endl << endl;
 
-	animate();
+#endif // UNIQ_RAND
 
 }
+
+//Исполнитель
+/*
+-----------------------------------------------------
+|													|
+|	"Компьютерная академия ШАГ"						|
+|	Курс: БД011										|
+|	Предмет: Основы програмирования на языке C++	|
+|													|
+|	Исполнитель: Курицын Алексей					|
+|	Преподаватель: Ковтун Олег						|
+|													|
+|	Екатеринбург - 2020								|
+|													|
+-----------------------------------------------------
+*/
