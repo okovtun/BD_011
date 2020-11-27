@@ -1,114 +1,246 @@
-﻿#define _CRT_SECURE_NO_WARNINGS
+﻿/*
+TODO:
+1. Написать программу, которая перемножает две матрицы C = A * B;
+2. Вычислить определитель матрицы третьего парядка методом Саррюса;
+*/
 #include <iostream>
-#include <string>
 #include <conio.h>
-#include <locale>
-#include <stdio.h>
-#include <io.h>
-#include <Windows.h>
-#include <fcntl.h>
-#include <valarray>
-#include <algorithm>
-
 
 using namespace std;
 
-/*
-#define escape 27
-#define enter 13
-#define space 32
-#define tab 9
-#define BackSlash 92
-*/
-/*
-#define UgolUpLeft (char)218
-#define UgolUpRight (char)191
-#define UgolDownLeft (char)192
-#define UgolDownRight (char)217
-#define HorizontalLine (char)196
-#define VerticalLine (char)179
-#define Kvadrat (char)219
-#define space 32
-*/
+#define Esc 27
 
-void animate()
+void main()
 {
-	for (int i = 0; i < INFINITE; ++i)
+	setlocale(LC_ALL, "Russian");
+	char input_char;
+
+	do
 	{
-		cout << "---------+++++++++---------+++++++++---------\r" << "";
-		Sleep(200);
-		cout << "+++++++++---------+++++++++---------+++++++++\r" << "";
-		Sleep(200);
+		//Приветствие.
+		system("CLS");
+		cout << "\t ======+=========+=========+=========+=========+====== \n";
+		cout << "\t|                       МАТРИЦЫ                       |\n";
+		cout << "\t|-----------------------------------------------------|\n";
+		cout << "\t|    Вашему вниманию представляется программа по      |\n";
+		cout << "\t| вычислению матриц.                                  |\n";
+		cout << "\t|    Матрицы генерируются псевдослучайным образом.    |\n";
+		cout << "\t|                                                     |\n";
+		cout << "\t|    Выберите задание для проверки:                   |\n";
+		cout << "\t|                                                     |\n";
+		cout << "\t|    1. Произведение матрицы A * B = C                |\n";
+		cout << "\t|    2. Определитель матрицы (методом Саррюса)        |\n";
+		cout << "\t|                                                     |\n";
+		cout << "\t|    'Escape' - завершение программы.                 |\n";
+		cout << "\t|                                                     |\n";
+		cout << "\t ======+=========+=========+=========+=========+====== \n";
+		cout << "\t>>>";
 
+		input_char = _getch(); //Ожидаем нажание клавиши. И помещаем её в переменную.
 
-	}
-}
-
-// На момент кодинга я очень тупил по этому делал для себя заметки что бы анализировать и меньше тупить
-
-void Random(int* a, int n) // Ставлю в функции якобы массив(a) и число элементов(n)
-{
-	srand(time(NULL)); // Что бы каждый раз были рандомные цифры а не одни и те же сгенерированные рандомно 1 раз
-	for (int i = 0; i < n; i++) // От 0 до 10
-	{
-		a[i] = rand() % 5; // Заполняю массив рандомными цифрами
-	}
-}
-
-void Sorting(int* a, int n) // Делаю то же самое что и с первой функцией
-{
-	sort(a, a + n); // Сортирую, без этого никак
-}
-
-void Array(const int* a, int n) // То же самое
-{
-	cout << "Упорядоченный массив из рандомных чисел" << endl << endl; // Вывожу на экран текст
-
-	for (int i = 0; i < n; i++, Sleep(50)) // От 0 до 10 с задержкой в 50 мс
-	{
-		cout << a[i] << " "; // Вывожу на экран массив
-	}
-	cout << endl << endl; // перехожу на новую строку 2 раза
-}
-
-void Povtorenie(const int* a, int n) // То же самое
-{
-	cout << "Повторение" << endl << endl; // Вывожу на экран текст с начинанием с новой строки 2 раза
-
-	int povtor = 0; // Создаю переменную для записи повторов
-
-	for (int i = 0; i < n; i++) // От 0 до 10
-	{
-		if (a[i] == a[i + 1]) // Если массив из 10 элементов равен массиву из 11 элементов то... ¯\_(@_@)_/¯
+		switch ((int)input_char)
 		{
-			povtor++; // Записывается кол-во повторов
-			continue; // Чтобы повторяющиеся элементы не повторялись @_@
-		}
-		if (povtor != 0) // Если переменная равна 0 то повторов нет а если больше нуля то такое вот
+		case '1': //Произведение матриц
 		{
-			cout << a[i] << " | Повторяется " << povtor << " раз(а)" << endl; // Выводим повторяющиеся цифры которые от куда-то взялить(я до конца и не понял от куда) в консоль а потом выводим сколько раз они повторяются
+			system("CLS");
+			//Размеры матрицы
+			const int M = 3; //Количество строк
+			const int N = 5; //Количество элементов в строке
+			const int K = 3; //Количество элементов в строке второй матрици
+
+			int A[M][N] = {};
+			int B[N][K] = {};
+			int C[M][K] = {}; //Результат умножения матриц A и B
+
+			int min_rand = -10;
+			int max_rand = 10;
+
+			//Определим количество цыфр в числах. Для правильного размера cout.with.
+			int size_min_digit = 1;
+			int size_max_digit = 1;
+			int size_digit = 0;
+
+			size_digit = min_rand;
+			while ((size_digit /= 10) != 0)	size_min_digit++;
+			size_digit = max_rand;
+			while ((size_digit /= 10) != 0) size_max_digit++;
+
+			size_digit = ((size_min_digit > size_max_digit) ? size_min_digit : size_max_digit) + 1;
+			//Количество найдено. +1 место под знак '-'.
+
+			//Заполняем наши матрици
+			for (int i = 0; i < M; i++)
+			{
+				for (int j = 0; j < N; j++)
+				{
+					A[i][j] = rand() % (max_rand - min_rand) + min_rand; //Генерация случайного числа в диапазоне.
+				}
+			}
+
+			for (int i = 0; i < N; i++)
+			{
+				for (int j = 0; j < K; j++)
+				{
+					B[i][j] = rand() % (max_rand - min_rand) + min_rand; //Генерация случайного числа в диапазоне.
+				}
+			}
+
+			//Произведение матриц
+			for (int i = 0; i < M; i++)
+			{
+				for (int j = 0; j < K; j++)
+				{
+					for (int p = 0; p < N; p++)
+					{
+						C[i][j] += A[i][p] * B[p][j];
+					}
+				}
+			}
+
+			//Вывод матриц на экран
+			cout << "Matrix A:\n";
+			for (int i = 0; i < M; i++)
+			{
+				for (int j = 0; j < N; j++)
+				{
+					cout.width(size_digit);
+					cout << A[i][j] << "  ";
+				}
+				cout << endl;
+			}
+			cout << endl;
+
+			cout << "Matrix B:\n";
+			for (int i = 0; i < N; i++)
+			{
+				for (int j = 0; j < K; j++)
+				{
+					cout.width(size_digit);
+					cout << B[i][j] << "  ";
+				}
+				cout << endl;
+			}
+			cout << endl;
+
+			cout << "Matrix C = A * B\n";
+			size_digit = --size_digit * 2 + 1;
+			for (int i = 0; i < M; i++)
+			{
+				for (int j = 0; j < K; j++)
+				{
+					cout.width(size_digit);
+					cout << C[i][j] << "  ";
+				}
+				cout << endl;
+			}
+			system("PAUSE");
+			break;
 		}
-		povtor = 0; // Что бы каждый повторяющийся элемент не показывался шо он повторяется больше чем на самом деле
-	}
+		case '2': //Определитель матрицы методом Саррюса
+		{
+			system("CLS");
+
+			const int M = 3; //Размер матрицы (по условию матрица третьего порядка. Поэтому её размер 3 х 3.
+			int A[M][M]; //Сама матрица
+
+			int min_rand = -10;
+			int max_rand = 10;
+
+			//Определим количество цыфр в числах. Для правильного размера cout.with.
+			int size_min_digit = 1;
+			int size_max_digit = 1;
+			int size_digit = 0;
+
+			size_digit = min_rand;
+			while ((size_digit /= 10) != 0)	size_min_digit++;
+			size_digit = max_rand;
+			while ((size_digit /= 10) != 0) size_max_digit++;
+
+			size_digit = ((size_min_digit > size_max_digit) ? size_min_digit : size_max_digit) + 1;
+			//Количество найдено. +1 место под знак '-'.
+
+			//Заполняем матрицу
+			for (int i = 0; i < M; i++)
+			{
+				for (int j = 0; j < M; j++)
+				{
+					A[i][j] = rand() % (max_rand - min_rand) + min_rand;
+				}
+			}
+
+			cout << "Matrix A:\n";
+			//Вывод матрици
+			for (int i = 0; i < M; i++)
+			{
+				for (int j = 0; j < M; j++)
+				{
+					cout.width(size_digit);
+					cout << A[i][j] << "  ";
+				}
+				cout << endl;
+			}
+
+			//Расчет оприделителя матрици методом Саррюса.
+			int a = 1;
+			int b = 1;
+			int determinant_Sarrus = 0;
+
+			for (int n = 0; n < M; n++)
+			{
+				for (int i = 0, j = M - 1; i < M; i++, j--)
+				{
+					a *= A[i][i]; //Спадающая диагональ
+					b *= A[i][j]; //Восходящая диагональ
+				}
+
+				determinant_Sarrus += a - b; //Сохраняем результаты прохода
+				a = 1; b = 1; //Обнуляем (присваиваем 1) переменным для расчетов диагоналей
+
+				//Двигаем Матрицу справа налево на один столбик
+				for (int i = 0; i < M; i++)
+				{
+					for (int j = 0; j < M - 1; j++)
+					{
+						A[i][j] ^= A[i][j + 1];
+						A[i][j + 1] ^= A[i][j];
+						A[i][j] ^= A[i][j + 1];
+					}
+				}
+			}
+
+			cout << endl;
+			cout << "Определитель матрицы методом Саррюса = " << determinant_Sarrus << endl << endl;
+
+			system("PAUSE");
+			break;
+		}
+		default:
+			break;
+		}
+	} while (input_char != Esc);
+
+	//Пращаемся.
+	system("CLS");
+	cout << endl << endl;
+	cout << "\t ======+=========+=========+=========+=========+====== \n";
+	cout << "\t|                                                     |\n";
+	cout << "\t|                   До новых встреч!                  |\n";
+	cout << "\t|                                                     |\n";
+	cout << "\t ======+=========+=========+=========+=========+====== \n";
+	cout << endl;
 }
-
-// cout << a[i] == a[i + 1];
-
-int main()
-{
-	setlocale(LC_ALL, ""); // Делаю русский язык
-
-	const int elems = 10; // Делаю константу из 10 элементов
-	int arr[elems]; // Делаю массив из 10 элементов
-
-	Random(arr, elems); // Присваиваю функциям массив и число элементов
-	Sorting(arr, elems); // Потом отсортировываем по возрастанию
-	Array(arr, elems); // Выводим исходный массив
-	Povtorenie(arr, elems); // Выводим повторы
-
-	cout << endl; // На следуюзую строку
-
-	animate(); // Выводим анимацию
-}
-
-// Я умер, спасибо))0))000)
+//Исполнитель
+/*
+-----------------------------------------------------
+|													|
+|	"Компьютерная академия ШАГ"						|
+|	Курс: БД011										|
+|	Предмет: Основы програмирования на языке C++	|
+|													|
+|	Исполнитель: Курицын Алексей					|
+|	Преподаватель: Ковтун Олег						|
+|													|
+|	Екатеринбург - 2020								|
+|													|
+-----------------------------------------------------
+*/
