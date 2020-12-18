@@ -24,6 +24,7 @@ void Print(double arr[ROWS][COLS], const int m, const int n);
 
 void Sort(int arr[], const int n);
 void Sort(double arr[], const int n);
+void Sort(int arr[ROWS][COLS], const int m, const int n);
 
 int Sum(int arr[], const int n);
 double Sum(double arr[], const int n);
@@ -76,6 +77,9 @@ void main()
 	Print(arr2, ROWS, COLS);
 	cout << "Сумма элементов массива: " << Sum(arr2, ROWS, COLS) << endl;
 	cout << "Среднее арифметическое : " << Avg(arr2, ROWS, COLS) << endl;
+	cout << "Отсортированный массив:\n";
+	Sort(arr2, ROWS, COLS);
+	Print(arr2, ROWS, COLS);
 	cout << delimiter << endl;
 
 	cout << "Двумерный массив типа double:\n";
@@ -159,7 +163,7 @@ void FillRand(double arr[ROWS][COLS], const int m, const int n)
 	{
 		for (int j = 0; j < n; j++)
 		{
-			arr[i][j] = double(rand() % 10000)/100;
+			arr[i][j] = double(rand() % 10000) / 100;
 		}
 	}
 }
@@ -240,6 +244,33 @@ void Sort(double arr[], const int n)
 			}
 		}
 	}
+}
+void Sort(int arr[ROWS][COLS], const int m, const int n)
+{
+	int iterations = 0;
+	int exchanges = 0;
+	for (int i = 0; i < m; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			for (int k = i; k < m; k++)
+			{
+				for (int l = k == i ? j + 1 : 0; l < n; l++)
+				{
+					iterations++;
+					if (arr[k][l] < arr[i][j])
+					{
+						int buffer = arr[i][j];
+						arr[i][j] = arr[k][l];
+						arr[k][l] = buffer;
+						exchanges++;
+					}
+				}
+			}
+		}
+	}
+	cout << "Количество итераций: " << iterations << endl;
+	cout << "Количество обменов: " << exchanges << endl;
 }
 
 int Sum(int arr[], const int n)
