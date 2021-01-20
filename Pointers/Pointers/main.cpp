@@ -29,7 +29,6 @@ void main()
 	int arr[n] = { 3, 5, 8, 13, 21 };
 	cout << arr << endl;
 	cout << *arr << endl;
-#endif // POINTERS_AND_ARRAYS
 
 	//Pointer arithmetics: +, -, ++, --
 
@@ -47,4 +46,11 @@ void main()
 		cout << *(arr + i) << "\t";
 	}
 	cout << endl;
+#endif // POINTERS_AND_ARRAYS
+	
+	//Function doesn't take N arguments
+	INT_MAX;
+	//Type();
+	cout << int() << endl;
+	cout << double() << endl;
 }
