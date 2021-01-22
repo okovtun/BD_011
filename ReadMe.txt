@@ -1,6 +1,11 @@
 https://github.com/okovtun/BD_011
 https://www.youtube.com/watch?v=JcxXWXfzvh0&list=PLeqyOOqxeiIOAV6jwf66i0qm7tLMGSQZn&index=1&t=1316s
 
+TODO:
+ѕомен€ть местами две переменные без использовани€ третьей переменной.
+Ёто можно сделать арифметическими либо побитовыми операторами.
+http://cplusplus.com/doc/tutorial/operators/
+
 TOREAD:
 http://cplusplus.com/doc/tutorial/arrays/
 
