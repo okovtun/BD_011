@@ -1,7 +1,8 @@
 #include<iostream>
 using namespace std;
 
-int Sum(int n/*Количество передаваемых аргументов*/, int value/*Первый аргумент*/, ...)
+int Sum(int n/*Количество передаваемых аргументов*/, 
+	int value/*Первый аргумент*/, ...)
 {
 	int sum = 0;
 	int* start = &value;
