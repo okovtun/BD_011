@@ -2,6 +2,13 @@ https://github.com/okovtun/BD_011
 https://www.youtube.com/watch?v=JcxXWXfzvh0&list=PLeqyOOqxeiIOAV6jwf66i0qm7tLMGSQZn&index=1&t=1316s
 
 TODO:
+В проект DynamicMemory добавить функции:
+void insert();	//Вставляет значение в массив по указанному индексу;
+void pop_back();//Удаляет значение с конца массива
+void pop_front();//Удаляет значение с начала массива
+void erase();	//Удаляет значение из массива по указанному индексу
+
+DONE:
 В проект DynamicMemory добавить алгоритм добавления элемента в конец массива.
 
 DONE:
