@@ -3,9 +3,9 @@ https://www.youtube.com/watch?v=JcxXWXfzvh0&list=PLeqyOOqxeiIOAV6jwf66i0qm7tLMGS
 
 TODO:
 В проект DynamicMemory добавить функции:
-void insert();	//Вставляет значение в массив по указанному индексу;
-void pop_back();//Удаляет значение с конца массива
-void pop_front();//Удаляет значение с начала массива
+void insert();	//Вставляет значение в массив по указанному индексу;	DONE
+void pop_back();//Удаляет значение с конца массива			DONE
+void pop_front();//Удаляет значение с начала массива			DONE
 void erase();	//Удаляет значение из массива по указанному индексу
 
 DONE:

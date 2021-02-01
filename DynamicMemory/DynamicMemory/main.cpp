@@ -6,6 +6,10 @@ void Print(int arr[], const int n);
 
 void push_back_mutable(int*& arr, int& n, int value);
 void push_front_mutable(int*& arr, int& n, int value);
+void insert(int*& arr, int& n, int value, int index);
+
+void pop_back(int*& arr, int& n);
+void pop_front(int*& arr, int& n);
 
 //#define DEBUG_ASSERTION_FAILED_1
 //#define DEBUG_ASSERTION_FAILED_2
@@ -26,12 +30,24 @@ void main()
 	Print(arr, n);
 
 	int value;
-	cout << "Введите добавляемое значение: "; cin >> value;
+	/*cout << "Введите добавляемое значение: "; cin >> value;
 	push_back_mutable(arr, n, value);
 	Print(arr, n);
 
 	cout << "Введите добавляемое значение: "; cin >> value;
 	push_front_mutable(arr, n, value);
+	Print(arr, n);*/
+
+	int index;
+	cout << "Введите добавляемое значение: "; cin >> value;
+	cout << "Введите индекс: "; cin >> index;
+	insert(arr, n, value, index);
+	Print(arr, n);
+
+	pop_back(arr, n);
+	Print(arr, n);
+
+	pop_front(arr, n);
 	Print(arr, n);
 
 #ifdef DEBUG_ASSERTION_FAILED_2
@@ -53,7 +69,7 @@ void Print(int arr[], const int n)
 {
 	for (int i = 0; i < n; i++)
 	{
-		cout << arr[i] <<"\t";
+		cout << arr[i] << "\t";
 	}
 	cout << endl;
 }
@@ -87,4 +103,46 @@ void push_front_mutable(int*& arr, int& n, int value)
 	arr[0] = value;
 	//6. Увеличиваем размер массива:
 	n++;
+}
+void insert(int*& arr, int& n, int value, int index)
+{
+	if (index >= n)return;
+	int* buffer = new int[n + 1];
+	/*for (int i = 0; i < index; i++)
+	{
+		buffer[i] = arr[i];
+	}
+	for (int i = index; i < n; i++)
+	{
+		buffer[i + 1] = arr[i];
+	}*/
+	for (int i = 0; i < n; i++)
+	{
+		//if (i < index)buffer[i] = arr[i]; else buffer[i + 1] = arr[i];
+		//(i < index) ? buffer[i] = arr[i] : buffer[i + 1] = arr[i];
+		(i < index ? buffer[i] : buffer[i + 1]) = arr[i];
+	}
+	delete[] arr;
+	arr = buffer;
+	arr[index] = value;
+	n++;
+}
+
+void pop_back(int*& arr, int& n)
+{
+	int* buffer = new int[--n];
+	for (int i = 0; i < n; i++)
+	{
+		buffer[i] = arr[i];
+	}
+	delete[] arr;
+	arr = buffer;
+}
+void pop_front(int*& arr, int& n)
+{
+	int* buffer = new int[--n];
+	for (int i = 0; i < n; i++)
+		buffer[i] = arr[i + 1];
+	delete[] arr;
+	arr = buffer;
 }
