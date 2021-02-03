@@ -1,8 +1,12 @@
 ﻿#include<iostream>
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
 
 void FillRand(int arr[], const int n);
+void FillRand(int** arr, const int m, const int n);
 void Print(int arr[], const int n);
+void Print(int** arr, const int m, const int n);
 
 void push_back_mutable(int*& arr, int& n, int value);
 void push_front_mutable(int*& arr, int& n, int value);
@@ -14,14 +18,20 @@ void pop_front(int*& arr, int& n);
 //#define DEBUG_ASSERTION_FAILED_1
 //#define DEBUG_ASSERTION_FAILED_2
 
+//#define DYNAMIC_MEMORY_1
+#define DYNAMIC_MEMORY_2
+
 void main()
 {
 	setlocale(LC_ALL, "Russian");
+
 #ifdef DEBUG_ASSERTION_FAILED_1
 	int a = 2;
 	int* pa = &a;
 	delete pa;
 #endif
+
+#ifdef DYNAMIC_MEMORY_1
 	int n;
 	cout << "Введите размер массива: "; cin >> n;
 	int* arr = new int[n];
@@ -50,11 +60,35 @@ void main()
 	pop_front(arr, n);
 	Print(arr, n);
 
+
 #ifdef DEBUG_ASSERTION_FAILED_2
 	int* buffer = arr;
 	delete[] buffer;
 #endif // DEBUG_ASSERTION_FAILED_2
 
+	delete[] arr;
+#endif // DYNAMIC_MEMORY_1
+
+	int m;	//Количство строк
+	int n;	//Количество столбцов (элементов строки)
+	cout << "Введите количество строк: "; cin >> m;
+	cout << "Введите количество элементов строки: "; cin >> n;
+	//1) Создаем массив указателей:
+	int** arr = new int*[m];
+	//2) Выделяем память для строк двумерного динамического массива:
+	for (int i = 0; i < m; i++)
+	{
+		arr[i] = new int[n];
+	}
+	//3) Работа с двумерным динамическим массивом:
+	FillRand(arr, m, n);
+	Print(arr, m, n);
+	
+	//4) Удаление двумерного динамического массива:
+	for (int i = 0; i < m; i++)
+	{
+		delete[] arr[i];
+	}
 	delete[] arr;
 }
 
@@ -65,6 +99,16 @@ void FillRand(int arr[], const int n)
 		arr[i] = rand() % 100;
 	}
 }
+void FillRand(int ** arr, const int m, const int n)
+{
+	for (int i = 0; i < m; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			arr[i][j] = rand() % 100;
+		}
+	}
+}
 void Print(int arr[], const int n)
 {
 	for (int i = 0; i < n; i++)
@@ -72,6 +116,17 @@ void Print(int arr[], const int n)
 		cout << arr[i] << "\t";
 	}
 	cout << endl;
+}
+void Print(int ** arr, const int m, const int n)
+{
+	for (int i = 0; i < m; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			cout << arr[i][j] << "\t";
+		}
+		cout << endl;
+	}
 }
 
 void push_back_mutable(int*& arr, int& n, int value)
