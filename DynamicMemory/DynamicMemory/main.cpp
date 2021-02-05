@@ -3,6 +3,9 @@ using std::cin;
 using std::cout;
 using std::endl;
 
+int** Allocate(const int m, const int n);
+void Clear(int** arr, const int m);
+
 void FillRand(int arr[], const int n);
 void FillRand(int** arr, const int m, const int n);
 void Print(int arr[], const int n);
@@ -73,6 +76,17 @@ void main()
 	int n;	//Количество столбцов (элементов строки)
 	cout << "Введите количество строк: "; cin >> m;
 	cout << "Введите количество элементов строки: "; cin >> n;
+	int** arr = Allocate(m, n);
+	
+	//3) Работа с двумерным динамическим массивом:
+	FillRand(arr, m, n);
+	Print(arr, m, n);
+
+	Clear(arr, m);
+}
+
+int** Allocate(const int m, const int n)
+{
 	//1) Создаем массив указателей:
 	int** arr = new int*[m];
 	//2) Выделяем память для строк двумерного динамического массива:
@@ -80,10 +94,10 @@ void main()
 	{
 		arr[i] = new int[n];
 	}
-	//3) Работа с двумерным динамическим массивом:
-	FillRand(arr, m, n);
-	Print(arr, m, n);
-	
+	return arr;
+}
+void Clear(int ** arr, const int m)
+{
 	//4) Удаление двумерного динамического массива:
 	for (int i = 0; i < m; i++)
 	{
