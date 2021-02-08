@@ -6,7 +6,7 @@ using std::endl;
 int** Allocate(const int m, const int n);
 void Clear(int** arr, const int m);
 
-void FillRand(int arr[], const int n);
+void FillRand(int arr[], const int n, int maxRand = 100, int minRand = 0);
 void FillRand(int** arr, const int m, const int n);
 void Print(int arr[], const int n);
 void Print(int** arr, const int m, const int n);
@@ -14,6 +14,8 @@ void Print(int** arr, const int m, const int n);
 void push_back_mutable(int*& arr, int& n, int value);
 void push_front_mutable(int*& arr, int& n, int value);
 void insert(int*& arr, int& n, int value, int index);
+
+void push_row_back(int**& arr, int& m, const int n);
 
 void pop_back(int*& arr, int& n);
 void pop_front(int*& arr, int& n);
@@ -77,11 +79,14 @@ void main()
 	cout << "Введите количество строк: "; cin >> m;
 	cout << "Введите количество элементов строки: "; cin >> n;
 	int** arr = Allocate(m, n);
-	
+
 	//3) Работа с двумерным динамическим массивом:
 	FillRand(arr, m, n);
 	Print(arr, m, n);
-
+	cout << "Добавляем строку в конец:\n";
+	push_row_back(arr, m, n);
+	FillRand(arr[m - 1], n, 0, 100);
+	Print(arr, m, n);
 	Clear(arr, m);
 }
 
@@ -106,11 +111,11 @@ void Clear(int ** arr, const int m)
 	delete[] arr;
 }
 
-void FillRand(int arr[], const int n)
+void FillRand(int arr[], const int n, int maxRand, int minRand)
 {
 	for (int i = 0; i < n; i++)
 	{
-		arr[i] = rand() % 100;
+		arr[i] = rand() % (maxRand - minRand) + minRand;
 	}
 }
 void FillRand(int ** arr, const int m, const int n)
@@ -195,6 +200,25 @@ void insert(int*& arr, int& n, int value, int index)
 	arr = buffer;
 	arr[index] = value;
 	n++;
+}
+
+void push_row_back(int **& arr, int & m, const int n)
+{
+	//1) Создаем буферный массив указателей:
+	int** buffer = new int*[m + 1];
+	//2) Копируем адреса строк исходного массива в буферный массив указателей:
+	for (int i = 0; i < m; i++)
+	{
+		buffer[i] = arr[i];
+	}
+	//3) Удаляем исходный массив указателей:
+	delete[] arr;
+	//4) Говорим что buffer - это наш новый массив:
+	arr = buffer;
+	//5) Теперь в нашем массиве есть место для добавления еще одной строки:
+	buffer[m] = new int[n] {};
+	//6) После добавления строки в массив, количество его строк увеличивается на одну:
+	m++;
 }
 
 void pop_back(int*& arr, int& n)

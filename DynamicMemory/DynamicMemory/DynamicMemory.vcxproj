@@ -23,7 +23,7 @@
     <ProjectGuid>{4B67DC3A-34EC-4802-BB35-20EF1079FCFD}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>DynamicMemory</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
