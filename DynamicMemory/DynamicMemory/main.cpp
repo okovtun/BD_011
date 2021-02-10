@@ -11,11 +11,13 @@ void FillRand(int** arr, const int m, const int n);
 void Print(int arr[], const int n);
 void Print(int** arr, const int m, const int n);
 
-void push_back_mutable(int*& arr, int& n, int value);
-void push_front_mutable(int*& arr, int& n, int value);
+void push_back(int*& arr, int& n, int value);
+void push_front(int*& arr, int& n, int value);
 void insert(int*& arr, int& n, int value, int index);
 
 void push_row_back(int**& arr, int& m, const int n);
+void push_row_front(int**& arr, int& m, const int n);
+void insert_row(int**& arr, int& m, const int n, int index);
 
 void pop_back(int*& arr, int& n);
 void pop_front(int*& arr, int& n);
@@ -87,6 +89,15 @@ void main()
 	push_row_back(arr, m, n);
 	FillRand(arr[m - 1], n, 0, 100);
 	Print(arr, m, n);
+	cout << "Добавляем строку в начало:\n";
+	push_row_front(arr, m, n);
+	arr[0][3] = 123;
+	Print(arr, m, n);
+
+	int index;
+	cout << "Введите индекс добавляемой строки: "; cin >> index;
+	insert_row(arr, m, n, index);
+	Print(arr, m, n);
 	Clear(arr, m);
 }
 
@@ -148,7 +159,7 @@ void Print(int ** arr, const int m, const int n)
 	}
 }
 
-void push_back_mutable(int*& arr, int& n, int value)
+void push_back(int*& arr, int& n, int value)
 {
 	int* buffer = new int[n + 1]{};
 	for (int i = 0; i < n; i++)
@@ -160,7 +171,7 @@ void push_back_mutable(int*& arr, int& n, int value)
 	arr[n] = value;
 	n++;
 }
-void push_front_mutable(int*& arr, int& n, int value)
+void push_front(int*& arr, int& n, int value)
 {
 	//1. Создаем буферный массив нужного размера:
 	int* buffer = new int[n + 1]{};
@@ -218,6 +229,31 @@ void push_row_back(int **& arr, int & m, const int n)
 	//5) Теперь в нашем массиве есть место для добавления еще одной строки:
 	buffer[m] = new int[n] {};
 	//6) После добавления строки в массив, количество его строк увеличивается на одну:
+	m++;
+}
+
+void push_row_front(int**& arr, int & m, const int n)
+{
+	int** buffer = new int*[m + 1]{};
+	for (int i = 0; i < m; i++)
+		buffer[i + 1] = arr[i];
+	delete[] arr;
+	arr = buffer;
+	arr[0] = new int[n] {};
+	m++;
+}
+
+void insert_row(int**& arr, int& m, const int n, int index)
+{
+	if (index > m)return;
+	int** buffer = new int*[m + 1];
+	for (int i = 0; i < index; i++)
+		buffer[i] = arr[i];
+	for (int i = index; i < m; i++)
+		buffer[i + 1] = arr[i];
+	delete[] arr;
+	arr = buffer;
+	arr[index] = new int[n] {};
 	m++;
 }
 
