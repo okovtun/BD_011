@@ -18,6 +18,7 @@ void insert(int*& arr, int& n, int value, int index);
 void push_row_back(int**& arr, int& m, const int n);
 void push_row_front(int**& arr, int& m, const int n);
 void insert_row(int**& arr, int& m, const int n, int index);
+void push_col_back(int** arr, const int m, int& n);
 
 void pop_back(int*& arr, int& n);
 void pop_front(int*& arr, int& n);
@@ -97,6 +98,10 @@ void main()
 	int index;
 	cout << "Введите индекс добавляемой строки: "; cin >> index;
 	insert_row(arr, m, n, index);
+	Print(arr, m, n);
+
+	cout << "Добавление столбца в конец массива:\n";
+	push_col_back(arr, m, n);
 	Print(arr, m, n);
 	Clear(arr, m);
 }
@@ -255,6 +260,23 @@ void insert_row(int**& arr, int& m, const int n, int index)
 	arr = buffer;
 	arr[index] = new int[n] {};
 	m++;
+}
+
+void push_col_back(int** arr, const int m, int & n)
+{
+	for (int i = 0; i < m; i++)
+	{
+		//1) Создаем буферную строку нужного размера:
+		int* buffer = new int[n + 1]{};
+		//2) Копируем исходную строку в буферную:
+		for (int j = 0; j < n; j++)
+			buffer[j] = arr[i][j];
+		//3) Удаляем исходную строку:
+		delete[] arr[i];
+		//4) Подменяем адрес:
+		arr[i] = buffer;
+	}
+	n++;
 }
 
 void pop_back(int*& arr, int& n)
