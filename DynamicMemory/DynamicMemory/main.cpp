@@ -18,7 +18,13 @@ void insert(int*& arr, int& n, int value, int index);
 void push_row_back(int**& arr, int& m, const int n);
 void push_row_front(int**& arr, int& m, const int n);
 void insert_row(int**& arr, int& m, const int n, int index);
+
+void pop_row_back(int**& arr, int& m, const int n);
+void pop_row_front(int**& arr, int& m, const int n);
+
 void push_col_back(int** arr, const int m, int& n);
+void push_col_front(int** arr, const int m, int& n);
+void insert_col(int** arr, const int m, int& n, int index);
 
 void pop_back(int*& arr, int& n);
 void pop_front(int*& arr, int& n);
@@ -103,6 +109,23 @@ void main()
 	cout << "Добавление столбца в конец массива:\n";
 	push_col_back(arr, m, n);
 	Print(arr, m, n);
+	
+	cout << "Добавление столбца в начало массива:\n";
+	push_col_front(arr, m, n);
+	Print(arr, m, n);
+
+	cout << "Введите индекс добавляемого столбца: "; cin >> index;
+	insert_col(arr, m, n, index);
+	Print(arr, m, n);
+
+	cout << "Удаление последней строки:\n";
+	pop_row_back(arr, m, n);
+	Print(arr, m, n);
+
+	cout << "Удаление нулевой строки:\n";
+	pop_row_front(arr, m, n);
+	Print(arr, m, n);
+
 	Clear(arr, m);
 }
 
@@ -262,6 +285,25 @@ void insert_row(int**& arr, int& m, const int n, int index)
 	m++;
 }
 
+void pop_row_back(int**& arr, int & m, const int n)
+{
+	int** buffer = new int*[--m]{};
+	for (int i = 0; i < m; i++)
+		buffer[i] = arr[i];
+	delete[] arr[m];//Удаляем последнюю строку из памяти
+	delete[] arr;	//Удаляем массив указателей	
+	arr = buffer;	//Подменяем на новый массив указателей
+}
+void pop_row_front(int**& arr, int& m, const int n)
+{
+	int** buffer = new int*[--m];
+	for (int i = 0; i < m; i++)
+		buffer[i] = arr[i + 1];
+	delete[] arr[0];
+	delete[] arr;
+	arr = buffer;
+}
+
 void push_col_back(int** arr, const int m, int & n)
 {
 	for (int i = 0; i < m; i++)
@@ -274,6 +316,33 @@ void push_col_back(int** arr, const int m, int & n)
 		//3) Удаляем исходную строку:
 		delete[] arr[i];
 		//4) Подменяем адрес:
+		arr[i] = buffer;
+	}
+	n++;
+}
+void push_col_front(int** arr, const int m, int& n)
+{
+	for (int i = 0; i < m; i++)
+	{
+		int* buffer = new int[n+1] {};
+		for (int j = 0; j < n; j++)
+			buffer[j+1] = arr[i][j];
+		delete[] arr[i];
+		arr[i] = buffer;
+	}
+	n++;
+}
+
+void insert_col(int** arr, const int m, int & n, int index)
+{
+	for (int i = 0; i < m; i++)
+	{
+		int* buffer = new int[n + 1]{};
+		for (int j = 0; j < index; j++)
+			buffer[j] = arr[i][j];
+		for (int j = index; j < n; j++)
+			buffer[j + 1] = arr[i][j];
+		delete[] arr[i];
 		arr[i] = buffer;
 	}
 	n++;
