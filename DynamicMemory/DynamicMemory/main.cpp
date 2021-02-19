@@ -43,7 +43,7 @@ template<typename T>void pop_front(T*& arr, int& n);
 //#define DYNAMIC_MEMORY_1
 #define DYNAMIC_MEMORY_2
 
-typedef double DataType;
+typedef char DataType;
 
 void main()
 {
@@ -167,13 +167,66 @@ void FillRand(int arr[], const int n, int maxRand, int minRand)
 		arr[i] = rand() % (maxRand - minRand) + minRand;
 	}
 }
-void FillRand(int ** arr, const int m, const int n)
+void FillRand(float arr[], const int n, int maxRand, int minRand)
+{
+	for (int i = 0; i < n; i++)
+	{
+		arr[i] = float(rand() % (maxRand - minRand) + minRand)/10;
+	}
+}
+void FillRand(double arr[], const int n, int maxRand, int minRand)
+{
+	for (int i = 0; i < n; i++)
+	{
+		arr[i] = double(rand() % (maxRand - minRand) + minRand)/10;
+	}
+}
+void FillRand(char arr[], const int n, int maxRand, int minRand)
+{
+	for (int i = 0; i < n; i++)
+	{
+		arr[i] = rand();
+	}
+}
+
+
+void FillRand(int** arr, const int m, const int n)
 {
 	for (int i = 0; i < m; i++)
 	{
 		for (int j = 0; j < n; j++)
 		{
 			arr[i][j] = rand() % 100;
+		}
+	}
+}
+void FillRand(float** arr, const int m, const int n)
+{
+	for (int i = 0; i < m; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			arr[i][j] = float(rand() % 100)/10;
+		}
+	}
+}
+void FillRand(double** arr, const int m, const int n)
+{
+	for (int i = 0; i < m; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			arr[i][j] = double(rand() % 100)/10;
+		}
+	}
+}
+void FillRand(char** arr, const int m, const int n)
+{
+	for (int i = 0; i < m; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			arr[i][j] = rand();
 		}
 	}
 }
