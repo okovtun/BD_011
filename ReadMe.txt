@@ -2,8 +2,8 @@ https://github.com/okovtun/BD_011
 https://www.youtube.com/watch?v=JcxXWXfzvh0&list=PLeqyOOqxeiIOAV6jwf66i0qm7tLMGSQZn&index=1&t=1316s
 
 TODO:
-1. Перегрузить функцию FillRand для типов float, double и char, как для одномерных, так и для двумерных массивов;
-2. Закоммитить шаблонные функции после проверки с каждым типом данных;
+1. Перегрузить функцию FillRand для типов float, double и char, как для одномерных, так и для двумерных массивов; DONE
+2. Закоммитить шаблонные функции после проверки с каждым типом данных; 	DONE
 3. Создать ветку "dynamic_templated_separated", и в этой ветке вынести функции в отдельные файлы.
 
 DONE:
