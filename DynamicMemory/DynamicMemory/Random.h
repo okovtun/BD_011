@@ -1,6 +1,5 @@
 #pragma once
-
-
+#include"Random.cpp"
 
 template<typename T>void Random(T& variable);
 

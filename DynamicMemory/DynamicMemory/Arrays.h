@@ -1,4 +1,5 @@
 #pragma once
+#include"Arrays.cpp"
 
 template<typename T>void push_back(T*& arr, int& n, T value);
 template<typename T>void push_front(T*& arr, int& n, T value);

@@ -4,13 +4,9 @@ using std::cout;
 using std::endl;
 
 #include"Arrays.h"
-#include"Arrays.cpp"
 #include"Memory.h"
-#include"Memory.cpp"
 #include"Print.h"
-#include"Print.cpp"
 #include"Random.h"
-#include"Random.cpp"
 
 //#define DEBUG_ASSERTION_FAILED_1
 //#define DEBUG_ASSERTION_FAILED_2
@@ -18,7 +14,7 @@ using std::endl;
 //#define DYNAMIC_MEMORY_1
 #define DYNAMIC_MEMORY_2
 
-typedef double DataType;
+typedef char DataType;
 
 void main()
 {
