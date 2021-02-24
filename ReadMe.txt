@@ -2,6 +2,15 @@ https://github.com/okovtun/BD_011
 https://www.youtube.com/watch?v=JcxXWXfzvh0&list=PLeqyOOqxeiIOAV6jwf66i0qm7tLMGSQZn&index=1&t=1316s
 
 TODO:
+В проект CStrings добавить функции:
+void to_upper(char str[]);	//переводит строку в верхний регистр
+void to_lower(char str[]);	//переводит строку в нижний регистр
+void capitalize(char str[]);	//первую букву каждого слова в предложении делает заглвыной
+void shrink(char str[]);	//удаляет лишние пробелы из предложения, например: 
+				//Харашо      живет   на   свете          Винни Пух!
+				//Харашо живет на свете Винни Пух!
+
+DONE:
 1. Перегрузить функцию FillRand для типов float, double и char, как для одномерных, так и для двумерных массивов; DONE
 2. Закоммитить шаблонные функции после проверки с каждым типом данных; 	DONE
 3. Создать ветку "dynamic_templated_separated", и в этой ветке вынести функции в отдельные файлы.
