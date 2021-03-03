@@ -22,13 +22,22 @@ void shrink(char str[]);
 void remove_symbol(char str[], char symbol);
 bool is_palindrome(char str[]);
 
+//Numeric functions
+bool is_int_number(char str[]);//Объявление функции (Function declaration)
+int  to_int_number(char str[]);
+bool is_bin_number(char str[]);
+int  bin_to_dec(char str[]);
+
+//#define BASE_STRING_OPERATIONS
+
 void main()
 {
 	setlocale(LC_ALL, "Rus");
 	system("CHCP 1251");
 	system("CLS");
+#ifdef BASE_STRING_OPERATIONS
 	//char str[] = { 'H', 'e', 'l', 'l', 'o', 0 };
-	//char str[] = "Hello";
+//char str[] = "Hello";
 	const int n = 256;
 	char str[n];
 	//ASCII();
@@ -48,6 +57,16 @@ void main()
 	cout << str << endl;
 	cout << (is_palindrome(str) ? "Да" : "Нет") << endl;
 	cout << str << endl;
+#endif // BASE_STRING_OPERATIONS
+	//ASCII();
+	const int n = 256;
+	char str[n] = {};
+	cout << "Введите строку: ";
+	cin.getline(str, n);
+	/*cout << (is_int_number(str) ? "Число" : "НЕ число") << endl;
+	cout << to_int_number(str) * 2 << endl;*/
+
+	cout << "Строка " << (is_bin_number(str) ? "" : "НЕ ") << "является двоичным числом" << endl;
 }
 
 int StrLen(char str[])
@@ -140,4 +159,39 @@ bool is_palindrome(char str[])
 	}
 	delete[] buffer;
 	return true;
+}
+
+bool is_int_number(char str[])//Реализация функции (Определение функции - Function definition)
+{
+	for (int i = 0; str[i]; i++)
+	{
+		if (!(str[i] >= '0' && str[i] <= '9') && str[i] != ' ')return false;
+		if (str[i] == ' ' && str[i + 1] == ' ')return false;
+	}
+	return true;
+}
+int  to_int_number(char str[])
+{
+	if (!is_int_number(str))return 0;
+	int number = 0;
+	for (int i = 0; str[i]; i++)
+	{
+		if (str[i] == ' ')continue;
+		number *= 10;//Сдвигаем число на разряд влево (освобождаем младший разряд)
+		number += str[i] - 48;
+	}
+	return number;
+}
+bool is_bin_number(char str[])
+{
+	for (int i = 0; str[i]; i++)
+	{
+		if (str[i] != '0' && str[i] != '1')return false;
+	}
+	return true;
+}
+int  bin_to_dec(char str[])
+{
+	//TODO: 
+	//алгоритм перевода двоичного числа в десятичную СС
 }
