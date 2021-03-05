@@ -67,6 +67,7 @@ void main()
 	cout << to_int_number(str) * 2 << endl;*/
 
 	cout << "Строка " << (is_bin_number(str) ? "" : "НЕ ") << "является двоичным числом" << endl;
+	cout << str << "(bin) = " << bin_to_dec(str) << "(dec)" << endl;
 }
 
 int StrLen(char str[])
@@ -186,7 +187,10 @@ bool is_bin_number(char str[])
 {
 	for (int i = 0; str[i]; i++)
 	{
-		if (str[i] != '0' && str[i] != '1')return false;
+		if (str[i] != '0' && str[i] != '1' && str[i] != ' ')
+			return false;
+		if (str[i - 1] == ' ' && str[i] == ' ' && str[i + 1] == ' ')
+			return false;
 	}
 	return true;
 }
@@ -194,4 +198,17 @@ int  bin_to_dec(char str[])
 {
 	//TODO: 
 	//алгоритм перевода двоичного числа в десятичную СС
+	if(!is_bin_number(str))return 0;
+	int n = StrLen(str);//Разрядность числа
+	int decimal = 0;	//Конечное десятичное число
+	int weight = 1;		//Весовой коэффициент разряда
+	for (int i = n - 1; i >= 0; i--)
+	{
+		if (str[i] != ' ')
+		{
+			decimal += (str[i] - 48)*weight;
+			weight *= 2;
+		}
+	}
+	return decimal;
 }
