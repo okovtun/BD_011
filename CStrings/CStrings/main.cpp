@@ -1,4 +1,5 @@
 #include<iostream>
+#include<ctype.h>	//Для проверки, является ли символ цифрой
 #include<Windows.h>
 //using namespace std;
 using std::cin;
@@ -27,8 +28,12 @@ bool is_int_number(char str[]);//Объявление функции (Function declaration)
 int  to_int_number(char str[]);
 bool is_bin_number(char str[]);
 int  bin_to_dec(char str[]);
+bool is_hex_number(char str[]);
+int  hex_to_dec(char str[]);
 
 //#define BASE_STRING_OPERATIONS
+//#define BINARY_NUMBERS
+#define HEX_NUMBER
 
 void main()
 {
@@ -66,8 +71,13 @@ void main()
 	/*cout << (is_int_number(str) ? "Число" : "НЕ число") << endl;
 	cout << to_int_number(str) * 2 << endl;*/
 
+#ifdef BINARY_NUMBERS
 	cout << "Строка " << (is_bin_number(str) ? "" : "НЕ ") << "является двоичным числом" << endl;
 	cout << str << "(bin) = " << bin_to_dec(str) << "(dec)" << endl;
+#endif // BINARY_NUMBERS
+
+	cout << "Строка" << (is_hex_number(str) ? "" : " НЕ") << " является шестнадцатеричным числом" << endl;
+	cout << str << "(Hex) = " << hex_to_dec(str) << "(Dec)" << endl;
 }
 
 int StrLen(char str[])
@@ -198,7 +208,7 @@ int  bin_to_dec(char str[])
 {
 	//TODO: 
 	//алгоритм перевода двоичного числа в десятичную СС
-	if(!is_bin_number(str))return 0;
+	if (!is_bin_number(str))return 0;
 	int n = StrLen(str);//Разрядность числа
 	int decimal = 0;	//Конечное десятичное число
 	int weight = 1;		//Весовой коэффициент разряда
@@ -208,6 +218,44 @@ int  bin_to_dec(char str[])
 		{
 			decimal += (str[i] - 48)*weight;
 			weight *= 2;
+		}
+	}
+	return decimal;
+}
+bool is_hex_number(char str[])
+{
+	for (int i = str[0] == '0' && str[1] == 'x' ? 2 : 0; str[i]; i++)
+	{
+		if (
+			!(str[i] >= '0' && str[i] <= '9') &&
+			!(str[i] >= 'a' && str[i] <= 'f') &&
+			!(str[i] >= 'A' && str[i] <= 'F') &&
+			str[i] != ' '
+			)
+		{
+			return false;
+		}
+		if (str[i] == ' ' && str[i + 1] == ' ')return false;
+	}
+	return true;
+}
+int  hex_to_dec(char str[])
+{
+	if (!is_hex_number(str))return 0;
+	int n = strlen(str);
+	char* buffer = new char[n + 1]{};
+	strcpy(buffer, str);
+	to_upper(buffer);
+
+	int decimal = 0;
+	int weight = 1;
+	for (int i = n - 1; i >= 0; i--)
+	{
+		if (buffer[i] == 'x' || buffer[i] == 'X')break;
+		if (buffer[i] != ' ')
+		{
+			decimal += (buffer[i] - (isdigit(buffer[i]) ? 48 : 55))*weight;
+			weight *= 16;
 		}
 	}
 	return decimal;

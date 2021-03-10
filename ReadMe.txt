@@ -3,6 +3,10 @@ https://www.youtube.com/watch?v=JcxXWXfzvh0&list=PLeqyOOqxeiIOAV6jwf66i0qm7tLMGS
 
 TODO:
 В проект CStrings добавить функции:
+bool is_ip_address(char str[]);	//Проверяет, является ли строка IP-адресом
+bool is_mac_address(char str[]);//Проверяет, является ли строка MAC-адресом
+
+DONE:
 void to_upper(char str[]);	//переводит строку в верхний регистр				DONE
 void to_lower(char str[]);	//переводит строку в нижний регистр				DONE
 void capitalize(char str[]);	//первую букву каждого слова в предложении делает заглвыной	DONE
@@ -18,8 +22,8 @@ int  to_int_number(char str[]);	//Если строка - целое число,
 
 bool is_bin_number(char str[]);	//Определяет, является ли строка Двоичным числом.				DONE
 int  bin_to_dec(char str[]);	//Если строка - Двоичное число, то функция возвращает его десятичное значение.	DONE
-bool is_hex_number(char str[]);	//Определяет, является ли строка Шестнадцатеричным числом.
-int  hex_to_dec(char str[]);	//Если строка - Шестнадцатеричное число, то функция возвращает его десятичное значение.
+bool is_hex_number(char str[]);	//Определяет, является ли строка Шестнадцатеричным числом.			DONE
+int  hex_to_dec(char str[]);	//Если строка - Шестнадцатеричное число, то функция возвращает его десятичное значение.DONE
 
 DONE:
 1. Перегрузить функцию FillRand для типов float, double и char, как для одномерных, так и для двумерных массивов; DONE
