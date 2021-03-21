@@ -1,5 +1,5 @@
-#include<iostream>
-#include<ctype.h>	//Для проверки, является ли символ цифрой
+п»ї#include<iostream>
+#include<ctype.h>	//Р”Р»СЏ РїСЂРѕРІРµСЂРєРё, СЏРІР»СЏРµС‚СЃСЏ Р»Рё СЃРёРјРІРѕР» С†РёС„СЂРѕР№
 #include<Windows.h>
 //using namespace std;
 using std::cin;
@@ -24,7 +24,7 @@ void remove_symbol(char str[], char symbol);
 bool is_palindrome(char str[]);
 
 //Numeric functions
-bool is_int_number(char str[]);//Объявление функции (Function declaration)
+bool is_int_number(char str[]);//РћР±СЉСЏРІР»РµРЅРёРµ С„СѓРЅРєС†РёРё (Function declaration)
 int  to_int_number(char str[]);
 bool is_bin_number(char str[]);
 int  bin_to_dec(char str[]);
@@ -46,37 +46,37 @@ void main()
 	const int n = 256;
 	char str[n];
 	//ASCII();
-	cout << "Введите строку: ";
+	cout << "Р’РІРµРґРёС‚Рµ СЃС‚СЂРѕРєСѓ: ";
 	//SetConsoleCP(1251);
 	//cin >> str;
 	cin.getline(str, n);
 	//SetConsoleCP(866);
 	cout << str << endl;
-	cout << "Размер строки в Байтах:  " << sizeof(str) << endl;
-	cout << "Размер строки в символах:" << StrLen(str) << endl;
+	cout << "Р Р°Р·РјРµСЂ СЃС‚СЂРѕРєРё РІ Р‘Р°Р№С‚Р°С…:  " << sizeof(str) << endl;
+	cout << "Р Р°Р·РјРµСЂ СЃС‚СЂРѕРєРё РІ СЃРёРјРІРѕР»Р°С…:" << StrLen(str) << endl;
 	to_upper(str);
 	cout << str << endl;
 	capitalize(str);
 	cout << str << endl;
 	shrink(str);
 	cout << str << endl;
-	cout << (is_palindrome(str) ? "Да" : "Нет") << endl;
+	cout << (is_palindrome(str) ? "Р”Р°" : "РќРµС‚") << endl;
 	cout << str << endl;
 #endif // BASE_STRING_OPERATIONS
 	//ASCII();
 	const int n = 256;
 	char str[n] = {};
-	cout << "Введите строку: ";
+	cout << "Р’РІРµРґРёС‚Рµ СЃС‚СЂРѕРєСѓ: ";
 	cin.getline(str, n);
-	/*cout << (is_int_number(str) ? "Число" : "НЕ число") << endl;
+	/*cout << (is_int_number(str) ? "Р§РёСЃР»Рѕ" : "РќР• С‡РёСЃР»Рѕ") << endl;
 	cout << to_int_number(str) * 2 << endl;*/
 
 #ifdef BINARY_NUMBERS
-	cout << "Строка " << (is_bin_number(str) ? "" : "НЕ ") << "является двоичным числом" << endl;
+	cout << "РЎС‚СЂРѕРєР° " << (is_bin_number(str) ? "" : "РќР• ") << "СЏРІР»СЏРµС‚СЃСЏ РґРІРѕРёС‡РЅС‹Рј С‡РёСЃР»РѕРј" << endl;
 	cout << str << "(bin) = " << bin_to_dec(str) << "(dec)" << endl;
 #endif // BINARY_NUMBERS
 
-	cout << "Строка" << (is_hex_number(str) ? "" : " НЕ") << " является шестнадцатеричным числом" << endl;
+	cout << "РЎС‚СЂРѕРєР°" << (is_hex_number(str) ? "" : " РќР•") << " СЏРІР»СЏРµС‚СЃСЏ С€РµСЃС‚РЅР°РґС†Р°С‚РµСЂРёС‡РЅС‹Рј С‡РёСЃР»РѕРј" << endl;
 	cout << str << "(Hex) = " << hex_to_dec(str) << "(Dec)" << endl;
 }
 
@@ -91,11 +91,11 @@ void to_upper(char str[])
 {
 	for (int i = 0; str[i]; i++)
 	{
-		if (str[i] >= 'a' && str[i] <= 'z' || str[i] >= 'а' && str[i] <= 'я')
+		if (str[i] >= 'a' && str[i] <= 'z' || str[i] >= 'Р°' && str[i] <= 'СЏ')
 		{
 			str[i] -= 32;
 		}
-		else if (str[i] == 'ё')str[i] -= 16;
+		else if (str[i] == 'С‘')str[i] -= 16;
 	}
 }
 
@@ -103,23 +103,23 @@ void to_lower(char str[])
 {
 	for (int i = 0; str[i]; i++)
 	{
-		if (str[i] >= 'A' && str[i] <= 'Z' || str[i] >= 'А' && str[i] <= 'Я')
+		if (str[i] >= 'A' && str[i] <= 'Z' || str[i] >= 'Рђ' && str[i] <= 'РЇ')
 		{
 			str[i] += 32;
 		}
-		else if (str[i] == 'Ё')str[i] += 16;
+		else if (str[i] == 'РЃ')str[i] += 16;
 	}
 }
 
 void capitalize(char str[])
 {
 	to_lower(str);
-	if (str[0] >= 'a'&&str[0] <= 'z' || str[0] >= 'а' && str[0] <= 'я')str[0] -= 32;
-	else if (str[0] == 'ё')str[0] -= 16;
+	if (str[0] >= 'a'&&str[0] <= 'z' || str[0] >= 'Р°' && str[0] <= 'СЏ')str[0] -= 32;
+	else if (str[0] == 'С‘')str[0] -= 16;
 	for (int i = 1; str[i]; i++)
 	{
-		if ((str[i] >= 'a'&&str[i] <= 'z' || str[i] >= 'а' && str[i] <= 'я') && str[i - 1] == ' ')str[i] -= 32;
-		else if (str[i] == 'ё' && str[i - 1] == ' ')str[i] -= 16;
+		if ((str[i] >= 'a'&&str[i] <= 'z' || str[i] >= 'Р°' && str[i] <= 'СЏ') && str[i - 1] == ' ')str[i] -= 32;
+		else if (str[i] == 'С‘' && str[i - 1] == ' ')str[i] -= 16;
 	}
 }
 
@@ -129,7 +129,7 @@ void shrink(char str[])
 	{
 		while (str[i] == ' ' && str[i + 1] == ' ')
 		{
-			for (int j = i; str[j]; j++)//Сдвигает часть строки влево
+			for (int j = i; str[j]; j++)//РЎРґРІРёРіР°РµС‚ С‡Р°СЃС‚СЊ СЃС‚СЂРѕРєРё РІР»РµРІРѕ
 			{
 				str[j] = str[j + 1];
 			}
@@ -150,13 +150,13 @@ void remove_symbol(char str[], char symbol)
 
 bool is_palindrome(char str[])
 {
-	//Определяем длину строки
+	//РћРїСЂРµРґРµР»СЏРµРј РґР»РёРЅСѓ СЃС‚СЂРѕРєРё
 	int size = StrLen(str);
 	char* buffer = new char[size + 1]{};
 	//for (int i = 0; str[i]; i++)buffer[i] = str[i];
 	strcpy(buffer, str);//String Copy. 
-						//buffer - строка получатель, 
-						//str - строка источник
+						//buffer - СЃС‚СЂРѕРєР° РїРѕР»СѓС‡Р°С‚РµР»СЊ, 
+						//str - СЃС‚СЂРѕРєР° РёСЃС‚РѕС‡РЅРёРє
 	to_lower(buffer);
 	remove_symbol(buffer, ' ');
 	size = strlen(buffer);
@@ -172,7 +172,7 @@ bool is_palindrome(char str[])
 	return true;
 }
 
-bool is_int_number(char str[])//Реализация функции (Определение функции - Function definition)
+bool is_int_number(char str[])//Р РµР°Р»РёР·Р°С†РёСЏ С„СѓРЅРєС†РёРё (РћРїСЂРµРґРµР»РµРЅРёРµ С„СѓРЅРєС†РёРё - Function definition)
 {
 	for (int i = 0; str[i]; i++)
 	{
@@ -188,7 +188,7 @@ int  to_int_number(char str[])
 	for (int i = 0; str[i]; i++)
 	{
 		if (str[i] == ' ')continue;
-		number *= 10;//Сдвигаем число на разряд влево (освобождаем младший разряд)
+		number *= 10;//РЎРґРІРёРіР°РµРј С‡РёСЃР»Рѕ РЅР° СЂР°Р·СЂСЏРґ РІР»РµРІРѕ (РѕСЃРІРѕР±РѕР¶РґР°РµРј РјР»Р°РґС€РёР№ СЂР°Р·СЂСЏРґ)
 		number += str[i] - 48;
 	}
 	return number;
@@ -207,11 +207,11 @@ bool is_bin_number(char str[])
 int  bin_to_dec(char str[])
 {
 	//TODO: 
-	//алгоритм перевода двоичного числа в десятичную СС
+	//Р°Р»РіРѕСЂРёС‚Рј РїРµСЂРµРІРѕРґР° РґРІРѕРёС‡РЅРѕРіРѕ С‡РёСЃР»Р° РІ РґРµСЃСЏС‚РёС‡РЅСѓСЋ РЎРЎ
 	if (!is_bin_number(str))return 0;
-	int n = StrLen(str);//Разрядность числа
-	int decimal = 0;	//Конечное десятичное число
-	int weight = 1;		//Весовой коэффициент разряда
+	int n = StrLen(str);//Р Р°Р·СЂСЏРґРЅРѕСЃС‚СЊ С‡РёСЃР»Р°
+	int decimal = 0;	//РљРѕРЅРµС‡РЅРѕРµ РґРµСЃСЏС‚РёС‡РЅРѕРµ С‡РёСЃР»Рѕ
+	int weight = 1;		//Р’РµСЃРѕРІРѕР№ РєРѕСЌС„С„РёС†РёРµРЅС‚ СЂР°Р·СЂСЏРґР°
 	for (int i = n - 1; i >= 0; i--)
 	{
 		if (str[i] != ' ')

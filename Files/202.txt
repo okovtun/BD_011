@@ -1,0 +1,65 @@
+host 202-1
+{
+	hardware ethernet	00:19:99:b0:d2:34;
+	fixed-address		192.168.100.41;
+}
+
+host 202-2
+{
+	hardware ethernet	00:19:99:be:8b:6c;
+	fixed-address		192.168.100.42;
+}
+
+host 202-3
+{
+	hardware ethernet	00:19:99:a7:e5:25;
+	fixed-address		192.168.100.43;
+}
+
+host 202-4
+{
+	hardware ethernet	00:19:99:ad:a3:5f;
+	fixed-address		192.168.100.44;
+}
+
+host 202-5
+{
+	hardware ethernet	00:19:99:dc:52:1e;
+	fixed-address		192.168.100.45;
+}
+
+host 202-6
+{
+	hardware ethernet	00:19:99:b5:8b:91;
+	fixed-address		192.168.100.46;
+}
+
+host 202-7
+{
+	hardware ethernet	00:19:99:ad:6c:39;
+	fixed-address		192.168.100.47;
+}
+
+host 202-8
+{
+	hardware ethernet	00:19:99:b2:b4:28;
+	fixed-address		192.168.100.48;
+}
+
+host 202-9
+{
+	hardware ethernet	00:19:99:ae:90:1a;
+	fixed-address		192.168.100.49;
+}
+
+host 202-10
+{
+	hardware ethernet	00:50:fc:ce:5c:8d;
+	fixed-address		192.168.100.50;
+}
+
+host 202-11
+{
+	hardware ethernet	00:19:99:dc:52:a8;
+	fixed-address		192.168.100.51;
+}

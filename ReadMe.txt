@@ -2,6 +2,10 @@
 https://www.youtube.com/watch?v=JcxXWXfzvh0&list=PLeqyOOqxeiIOAV6jwf66i0qm7tLMGSQZn&index=1&t=1316s
 
 TODO:
+Из файла 201 HW.txt (https://github.com/okovtun/BD_011/blob/master/Files/ColumnExchange/201%20HW.txt) создать новый файл, например 201ready.txt и в новом фале поменять местами столбики с MAC-адресом, и IP-адресом. Имя исходного фала и нового файладолжно вводиться с клавиатуры;
+
+
+TODO:
 В проект CStrings добавить функции:
 bool is_ip_address(char str[]);	//Проверяет, является ли строка IP-адресом
 bool is_mac_address(char str[]);//Проверяет, является ли строка MAC-адресом

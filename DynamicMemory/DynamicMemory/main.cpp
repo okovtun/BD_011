@@ -129,7 +129,7 @@ void main()
 	Clear(arr, m);
 }
 
-int** Allocate(const int m, const int n)
+int** Allocate(const int m, const int n);
 {
 	//1) Создаем массив указателей:
 	int** arr = new int*[m];
